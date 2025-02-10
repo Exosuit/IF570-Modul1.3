@@ -28,6 +28,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
+fun WaterCounter(modifier: Modifier = Modifier) {
+    val count = 0
+    Text(
+        text = "You've had $count glasses.",
+        modifier = modifier.padding(16.dp)
+    )
+}
+
+@Composable
 fun StatefulCounter(modifier: Modifier = Modifier) {
     var count by rememberSaveable { mutableStateOf(0) }
     StatelessCounter(
