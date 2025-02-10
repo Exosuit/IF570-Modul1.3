@@ -33,11 +33,14 @@ import androidx.compose.runtime.remember
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
-        // Changes to count are now tracked by Compose
-        val count: MutableState<Int> = mutableStateOf(0)
+        var count by remember { mutableStateOf(0) }
 
-        Text("You've had ${count.value} glasses.")
-        Button(onClick = { count.value++ }, Modifier.padding(top = 8.dp)) {
+        if (count > 0) {
+            // This text is present if the button has been clicked
+            // at least once; absent otherwise
+            Text("You've had $count glasses.")
+        }
+        Button(onClick = { count++ }, Modifier.padding(top = 8.dp), enabled = count < 10) {
             Text("Add one")
         }
     }
